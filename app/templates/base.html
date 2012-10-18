@@ -9,7 +9,9 @@
 
     <div class="container">
       <div class="row">
-        <h1>California Propositions</h1>
+        <div class="span12">
+          <h1>California Propositions</h1>
+        </div>
       </div>
       <div class="row">
         <div class="span2"><h4>Prop #</h4></div>
@@ -22,6 +24,12 @@
         <div class="span2"><h2><a href="{{ prop["url"] }}">PROP {{ prop["number"] }}</a></h2></div>
         <div class="span7"><p class="lead">{{ prop["title"] }}</p></div>
         <div class="span3"><span class="label label-success">YES</span></div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <h4>Summary</h4>
+          {{ prop["summary"] }}
+        </div>
       </div>
       <div class="row">
         <div class="span6"><h4>YES Means</h4></div>
