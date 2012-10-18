@@ -11,7 +11,7 @@ class Proposition:
 	def __init__(self):
 		self.data = {}
 
-	def update_with_html(self, html, url):
+	def update_with_html(self, html, number, url):
 		soup = BeautifulSoup(html)
 		
 		# Get title
@@ -47,7 +47,8 @@ class Proposition:
 			"no_arg" : no_arg,
 			"yes_contact" : for_contact,
 			"no_contact" : no_contact,
-			"url" : url
+			"url" : url,
+            "number" : number
 		}
 
 	@staticmethod
@@ -71,15 +72,15 @@ class Proposition:
 
 
 def scrape_props(file):
-	result = {}
+	result = []
 
 	for prop_number in PROP_RANGE:
 		url = URL_SCHEME % prop_number
 		html = download_page(url)
 		prop = Proposition()
-		prop.update_with_html(html, url)
+		prop.update_with_html(html, prop_number, url)
 
-		result[prop_number] = prop.data
+		result.append(prop.data)
 
 		if not file:
 			print "Prop %d: " % prop_number, prop.json_pretty()

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <h1>California Propositions</h1>
+      </div>
+      <div class="row">
+        <div class="span2"><h4>Prop #</h4></div>
+        <div class="span7"><h4>Title</h4></div>
+        <div class="span3"><h4>Stance</h4></div>
+      </div>
+      <hr />
+{% for prop in props %}
+      <div class="row">
+        <div class="span2"><h2><a href="{{ prop["url"] }}">PROP {{ prop["number"] }}</a></h2></div>
+        <div class="span7"><p class="lead">{{ prop["title"] }}</p></div>
+        <div class="span3"><span class="label label-success">YES</span></div>
+      </div>
+      <div class="row">
+        <div class="span6"><h4>YES Means</h4></div>
+        <div class="span6"><h4>NO Means</h4></div>
+      </div>
+      <div class="row">
+        <div class="span6">{{ prop["yes_means"] }}</div>
+        <div class="span6">{{ prop["no_means"] }}</div>
+      </div>
+      <div class="row">
+        <div class="span6"><h4>YES Argument</h4></div>
+        <div class="span6"><h4>NO Argument</h4></div>
+      </div>
+      <div class="row">
+        <div class="span6">{{ prop["yes_arg"] }}</div>
+        <div class="span6">{{ prop["no_arg"] }}</div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <h4>Contact Information</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">{{ prop["yes_contact"]|safe }}</div>
+        <div class="span6">{{ prop["no_contact"]|safe }}</div>
+      </div>
+      <hr />
+{% endfor %}
+      <footer>
+        <p>Source: <a href="http://voterguide.sos.ca.gov/propositions/30/">CA Election Voter Guide</a></p>
+      </footer>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+  </body>
+</html>
