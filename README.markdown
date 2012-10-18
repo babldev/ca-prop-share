@@ -1,4 +1,4 @@
-props
+ca-prop-share
 -----
 A tool for sharing your California Proposition selections. The data comes from the CA voter guide: 
 http://voterguide.sos.ca.gov/propositions.
